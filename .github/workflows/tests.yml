@@ -50,6 +50,10 @@ jobs:
         env:
           PLAYWRIGHT_CHANNEL: chromium
           UI_OUTPUT: examples/ui-refinement/ci
+      - run: node scripts/tweaks-review.cjs
+        env:
+          PLAYWRIGHT_CHANNEL: chromium
+          TWEAKS_OUTPUT: examples/tweaks/ci
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -57,3 +61,4 @@ jobs:
           path: |
             examples/browser
             examples/ui-refinement/ci
+            examples/tweaks/ci/
