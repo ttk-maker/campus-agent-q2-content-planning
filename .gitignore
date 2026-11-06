@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+runtime/
+__pycache__/
+*.py[cod]
+*.db
+*.db-wal
+*.db-shm
+node_modules/
