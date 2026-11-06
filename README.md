@@ -6,6 +6,8 @@
 
 ## 评审入口
 
+- [本轮边缘与困难场景修复](docs/09-hardening-round.md)：修复前失败、原因、修复后回归与真实模型补测。
+
 - [需求与验收点](docs/01-requirements.md)、[动作流与设计取舍](docs/02-solution.md)。
 - [实际验证与失败记录](docs/03-evaluation.md)、[分层稳健性检查](docs/08-robustness.md)。
 - [AI 使用范围](docs/04-ai-usage.md)、[复盘与实际用时](docs/05-retrospective.md)。
@@ -55,7 +57,7 @@ py -3.10 -m scripts.make_request --scenario reference
 py -3.10 -m src.cli --request runtime/request/input.json --catalog runtime/request/catalog.json --db runtime/real.db --mode real
 ```
 
-网页服务默认采用上述本地端点和模型，CLI 需要显式环境变量。`.env.example` 是配置说明，程序不自动加载 `.env`。远程兼容 Chat Completions 的服务需 HTTPS 及自己授权的 `MODEL_API_KEY`，从环境传入；不提交真实密钥。
+网页服务默认采用上述本地端点和模型，CLI 需要显式环境变量。`.env.example` 是配置说明，程序不自动加载 `.env`。远程服务需支持 Chat Completions 的 JSON Schema 结构化输出，并使用 HTTPS 及自己授权的 `MODEL_API_KEY`，从环境传入；不提交真实密钥。
 
 每次模型选择一个 JSON 动作，工具执行后的真实状态和观察摘要回到模型，再决定换计划、重试或结束。单次 HTTP 超时 90 秒；CPU 推理可能持续数分钟。模型上下文只保留最近两次观察摘要及最新持久状态，完整产物保存在 SQLite 与 Trace。Mock 使用固定策略，仅验证流程，不证明真实决策效果。素材检索和脚本工具也是明确标注的本地合成工具。
 

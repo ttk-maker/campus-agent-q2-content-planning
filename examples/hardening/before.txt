@@ -1,0 +1,65 @@
+test_blank_constraints_return_missing_without_work (tests.test_hardening.HardeningTests) ... ERROR
+test_budget_one_cent_below_plan_no_paid_execution (tests.test_hardening.HardeningTests) ... ok
+test_custom_package_names_complete (tests.test_hardening.HardeningTests) ... ok
+test_different_request_keys_do_not_share_failure_counter (tests.test_hardening.HardeningTests) ... ok
+test_failed_save_resume_after_deadline_preserves_script (tests.test_hardening.HardeningTests) ... ok
+test_long_decimal_cannot_round_into_budget (tests.test_hardening.HardeningTests) ... test_malformed_price_table_has_validation_error (tests.test_hardening.HardeningTests) ... test_tiny_nonzero_amount_not_rounded_to_zero (tests.test_hardening.HardeningTests) ... ok
+test_two_real_threads_same_key_only_one_writer (tests.test_hardening.HardeningTests) ... ok
+test_zero_cost_catalog_keeps_exact_ledger (tests.test_hardening.HardeningTests) ... ok
+
+======================================================================
+ERROR: test_blank_constraints_return_missing_without_work (tests.test_hardening.HardeningTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>\tests\test_hardening.py", line 25, in test_blank_constraints_return_missing_without_work
+    r=self.run_agent()
+  File "<repo>\tests\test_planning.py", line 39, in run_agent
+    return self.agent.run(self.request)
+  File "<repo>\src\agent.py", line 18, in run
+    missing=validate_request(request)
+  File "<repo>\src\domain.py", line 45, in validate_request
+    cents(request["budget"])
+  File "<repo>\src\domain.py", line 33, in cents
+    raise ValueError("invalid amount") from None
+ValueError: invalid amount
+
+======================================================================
+ERROR: test_malformed_price_table_has_validation_error (tests.test_hardening.HardeningTests) (bad={'script_minutes': 1})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>\tests\test_hardening.py", line 33, in test_malformed_price_table_has_validation_error
+    with self.subTest(bad=bad),self.assertRaises(ValueError):validate_catalog(c)
+  File "<repo>\src\domain.py", line 74, in validate_catalog
+    cents(package["script_cost"])
+KeyError: 'script_cost'
+
+======================================================================
+ERROR: test_malformed_price_table_has_validation_error (tests.test_hardening.HardeningTests) (bad={'script_cost': 1})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>\tests\test_hardening.py", line 33, in test_malformed_price_table_has_validation_error
+    with self.subTest(bad=bad),self.assertRaises(ValueError):validate_catalog(c)
+  File "<repo>\src\domain.py", line 75, in validate_catalog
+    if type(package["script_minutes"]) is not int or not 1<=package["script_minutes"]<=1440:
+KeyError: 'script_minutes'
+
+======================================================================
+FAIL: test_long_decimal_cannot_round_into_budget (tests.test_hardening.HardeningTests) (value='7.999999999999999999999999999999')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>\tests\test_hardening.py", line 18, in test_long_decimal_cannot_round_into_budget
+    with self.subTest(value=value), self.assertRaises(ValueError): cents(value)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_long_decimal_cannot_round_into_budget (tests.test_hardening.HardeningTests) (value='10.000000000000000000000000000001')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>\tests\test_hardening.py", line 18, in test_long_decimal_cannot_round_into_budget
+    with self.subTest(value=value), self.assertRaises(ValueError): cents(value)
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.873s
+
+FAILED (failures=2, errors=3)

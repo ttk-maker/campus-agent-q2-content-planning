@@ -1,0 +1,96 @@
+{
+  "tested_at": "2026-11-06T12:42:05.588Z",
+  "base": "http://127.0.0.1:8768",
+  "checks": [
+    {
+      "name": "page and bootstrap loaded",
+      "passed": true
+    },
+    {
+      "name": "reference completes",
+      "passed": true
+    },
+    {
+      "name": "cost is eight",
+      "passed": true
+    },
+    {
+      "name": "repeat returns existing plan",
+      "passed": true
+    },
+    {
+      "name": "download retains actual result and input",
+      "passed": true
+    },
+    {
+      "name": "reload restores original request",
+      "passed": true
+    },
+    {
+      "name": "failed script visible",
+      "passed": true
+    },
+    {
+      "name": "successful search cost retained",
+      "passed": true
+    },
+    {
+      "name": "resume uses original payload",
+      "passed": true
+    },
+    {
+      "name": "resume completes for eight",
+      "passed": true
+    },
+    {
+      "name": "search is not repeated",
+      "passed": true
+    },
+    {
+      "name": "missing input guard",
+      "passed": true
+    },
+    {
+      "name": "budget gap shown",
+      "passed": true
+    },
+    {
+      "name": "replanning preserves failed premium",
+      "passed": true
+    },
+    {
+      "name": "save failure not success",
+      "passed": true
+    },
+    {
+      "name": "save-only resume",
+      "passed": true
+    },
+    {
+      "name": "invalid JSON is actionable",
+      "passed": true
+    },
+    {
+      "name": "topic rendered as text",
+      "passed": true
+    },
+    {
+      "name": "reload restores scenario label",
+      "passed": true
+    },
+    {
+      "name": "mobile no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "manual available",
+      "passed": true
+    },
+    {
+      "name": "no browser errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

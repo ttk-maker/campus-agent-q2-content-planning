@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-11-06T08:48:30.567375+00:00",
+  "verified_at": "2026-11-06T13:20:00.924747+00:00",
   "passed": true,
   "checks": {
     "real_budget_replanning": true,
@@ -12,13 +12,22 @@
     "browser_passed": true,
     "browser-real_passed": true,
     "tests_passed": true,
-    "real_ledger_consistency": true
+    "real_ledger_consistency": true,
+    "hardening_mock": true,
+    "hardening_browser": true,
+    "hardening_real-deadline-retest": true,
+    "hardening_real_custom_package": true,
+    "hardening_real_deadline_forces_basic": true,
+    "real_observed_deadline_conflict": true
   },
   "historical_failures_retained": [
     "examples/real-initial-failure",
     "examples/real-compact-attempt",
     "examples/real/tool_failure",
-    "examples/tests-before-http-fix"
+    "examples/tests-before-http-fix",
+    "examples/hardening/before.txt",
+    "examples/hardening/real",
+    "examples/hardening/real-retest"
   ],
   "note": "Initial real suite includes a failed tool-failure case; final corresponding evidence is real-tool-retest. No failure log has been rewritten."
 }

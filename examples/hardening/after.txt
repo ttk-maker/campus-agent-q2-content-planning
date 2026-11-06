@@ -1,0 +1,15 @@
+test_blank_constraints_return_missing_without_work (tests.test_hardening.HardeningTests) ... ok
+test_budget_one_cent_below_plan_no_paid_execution (tests.test_hardening.HardeningTests) ... ok
+test_custom_package_names_complete (tests.test_hardening.HardeningTests) ... ok
+test_different_request_keys_do_not_share_failure_counter (tests.test_hardening.HardeningTests) ... ok
+test_failed_save_resume_after_deadline_preserves_script (tests.test_hardening.HardeningTests) ... ok
+test_long_decimal_cannot_round_into_budget (tests.test_hardening.HardeningTests) ... ok
+test_malformed_price_table_has_validation_error (tests.test_hardening.HardeningTests) ... ok
+test_tiny_nonzero_amount_not_rounded_to_zero (tests.test_hardening.HardeningTests) ... ok
+test_two_real_threads_same_key_only_one_writer (tests.test_hardening.HardeningTests) ... ok
+test_zero_cost_catalog_keeps_exact_ledger (tests.test_hardening.HardeningTests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.965s
+
+OK

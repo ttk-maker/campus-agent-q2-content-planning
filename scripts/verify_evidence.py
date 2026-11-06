@@ -26,8 +26,15 @@ def main():
         data=read("examples/"+name+("/acceptance.json" if name=="mock" else "/report.json"))
         checks[name+"_passed"]=data["passed"]
     checks["real_ledger_consistency"]=all(sum(e["cost_cents"] for e in r["tool_events"])==r["actual_cost_cents"] for r in (reference,repeat,failure,over,missing,normal))
+    for name in ('mock','browser','real-deadline-retest'):
+        checks['hardening_'+name]=read('examples/hardening/'+name+'/report.json')['passed']
+    for name,package in (('custom_package','economy'),('deadline_forces_basic','basic')):
+        folder='real-retest' if name=='custom_package' else 'real-deadline-retest'
+        run=read('examples/hardening/'+folder+'/'+name+'/run-1.json');r=run['output']
+        checks['hardening_real_'+name]=r['status']=='completed' and r['package']==package and r['actual_cost']==8 and run['stored_plan_count']==1 and sum(e['cost_cents'] for e in r['tool_events'])==r['actual_cost_cents']
+        if name=='deadline_forces_basic':checks['real_observed_deadline_conflict']=any(t['action']['tool']=='estimate_cost' and t['observation'].get('deadline_gap_minutes',0)>0 for t in run['trace'])
     report={"verified_at":datetime.now(timezone.utc).isoformat(),"passed":all(checks.values()),"checks":checks,
-            "historical_failures_retained":["examples/real-initial-failure","examples/real-compact-attempt","examples/real/tool_failure","examples/tests-before-http-fix"],
+            "historical_failures_retained":["examples/real-initial-failure","examples/real-compact-attempt","examples/real/tool_failure","examples/tests-before-http-fix","examples/hardening/before.txt","examples/hardening/real","examples/hardening/real-retest"],
             "note":"Initial real suite includes a failed tool-failure case; final corresponding evidence is real-tool-retest. No failure log has been rewritten."}
     (ROOT/"examples/acceptance.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(json.dumps(report,ensure_ascii=False,indent=2));return 0 if report["passed"] else 1

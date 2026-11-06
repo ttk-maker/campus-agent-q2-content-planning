@@ -1,0 +1,25 @@
+{
+  "mode": "real",
+  "cases": [
+    {
+      "name": "custom_package",
+      "checks": {
+        "expected_terminal": true,
+        "actual_save": true,
+        "catalog_package": true
+      },
+      "passed": true
+    },
+    {
+      "name": "deadline_forces_basic",
+      "checks": {
+        "expected_terminal": true,
+        "actual_save": true,
+        "faster_alternative": true,
+        "observed_deadline_conflict": false
+      },
+      "passed": false
+    }
+  ],
+  "passed": false
+}

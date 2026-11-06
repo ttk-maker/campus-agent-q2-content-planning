@@ -1,0 +1,740 @@
+{
+  "output": {
+    "request_id": "deadline_forces_basic",
+    "status": "budget_exhausted",
+    "reason": "model_step_limit",
+    "topic": "秋季新品内容活动",
+    "missing": [],
+    "package": "basic",
+    "task_plan": [
+      {
+        "step": "search_materials",
+        "depends_on": []
+      },
+      {
+        "step": "generate_script:basic",
+        "depends_on": [
+          "search_materials"
+        ]
+      },
+      {
+        "step": "save_plan",
+        "depends_on": [
+          "generate_script:basic"
+        ]
+      }
+    ],
+    "steps": {
+      "search_materials": {
+        "status": "succeeded",
+        "attempts": 1,
+        "result": {
+          "topic": "秋季新品内容活动",
+          "materials": [
+            {
+              "id": "MAT-01",
+              "title": "产品场景素材",
+              "summary": "展示日常使用情境，避免未经证实的效果承诺。"
+            },
+            {
+              "id": "MAT-02",
+              "title": "用户问答素材",
+              "summary": "用常见问题介绍产品信息，所有表述来自合成资料。"
+            }
+          ]
+        },
+        "error": null
+      },
+      "generate_script:basic": {
+        "status": "succeeded",
+        "attempts": 1,
+        "result": {
+          "package": "basic",
+          "title": "秋季新品内容活动 · 内容活动方案",
+          "script": [
+            {
+              "stage": "开场",
+              "text": "围绕主题介绍目标用户的场景与问题。"
+            },
+            {
+              "stage": "主体",
+              "text": "结合素材：展示日常使用情境，避免未经证实的效果承诺。"
+            },
+            {
+              "stage": "互动",
+              "text": "邀请读者分享体验，收集问题并整理答复。"
+            }
+          ],
+          "material_ids": [
+            "MAT-01",
+            "MAT-02"
+          ],
+          "production_note": "本地合成脚本工具；真实模型负责规划决策，不宣称调用外部内容生产服务。"
+        },
+        "error": null
+      }
+    },
+    "tool_events": [
+      {
+        "tool": "estimate_cost",
+        "status": "succeeded",
+        "cost_cents": 0,
+        "quote": {
+          "package": "basic",
+          "estimated_total_cents": 800,
+          "estimated_total": 8.0,
+          "spent_cents": 0,
+          "spent": 0.0,
+          "remaining_minutes": 13,
+          "projected_finish": "2026-11-06T12:58:16.830269+00:00",
+          "budget_gap": 0.0,
+          "deadline_gap_minutes": 0,
+          "feasible": true
+        }
+      },
+      {
+        "tool": "search_materials",
+        "status": "succeeded",
+        "attempt": 1,
+        "cost_cents": 200
+      },
+      {
+        "tool": "generate_script:basic",
+        "status": "succeeded",
+        "attempt": 1,
+        "cost_cents": 400
+      },
+      {
+        "tool": "estimate_cost",
+        "status": "succeeded",
+        "cost_cents": 0,
+        "quote": {
+          "package": "basic",
+          "estimated_total_cents": 800,
+          "estimated_total": 8.0,
+          "spent_cents": 600,
+          "spent": 6.0,
+          "remaining_minutes": 2,
+          "projected_finish": "2026-11-06T12:59:16.830269+00:00",
+          "budget_gap": 0.0,
+          "deadline_gap_minutes": 0,
+          "feasible": true
+        }
+      },
+      {
+        "tool": "estimate_cost",
+        "status": "succeeded",
+        "cost_cents": 0,
+        "quote": {
+          "package": "basic",
+          "estimated_total_cents": 800,
+          "estimated_total": 8.0,
+          "spent_cents": 600,
+          "spent": 6.0,
+          "remaining_minutes": 2,
+          "projected_finish": "2026-11-06T13:00:16.830269+00:00",
+          "budget_gap": 0.0,
+          "deadline_gap_minutes": 0,
+          "feasible": true
+        }
+      },
+      {
+        "tool": "estimate_cost",
+        "status": "succeeded",
+        "cost_cents": 0,
+        "quote": {
+          "package": "basic",
+          "estimated_total_cents": 800,
+          "estimated_total": 8.0,
+          "spent_cents": 600,
+          "spent": 6.0,
+          "remaining_minutes": 2,
+          "projected_finish": "2026-11-06T13:01:16.830269+00:00",
+          "budget_gap": 0.0,
+          "deadline_gap_minutes": 0,
+          "feasible": true
+        }
+      },
+      {
+        "tool": "estimate_cost",
+        "status": "succeeded",
+        "cost_cents": 0,
+        "quote": {
+          "package": "basic",
+          "estimated_total_cents": 800,
+          "estimated_total": 8.0,
+          "spent_cents": 600,
+          "spent": 6.0,
+          "remaining_minutes": 2,
+          "projected_finish": "2026-11-06T13:02:16.830269+00:00",
+          "budget_gap": 0.0,
+          "deadline_gap_minutes": 0,
+          "feasible": true
+        }
+      }
+    ],
+    "actual_cost": 6.0,
+    "actual_cost_cents": 600,
+    "simulated_elapsed_minutes": 16,
+    "plan_id": null,
+    "save_status": "not_saved",
+    "saved_plan": null,
+    "options": [
+      {
+        "package": "premium",
+        "estimated_total_cents": 1600,
+        "estimated_total": 16.0,
+        "spent_cents": 600,
+        "spent": 6.0,
+        "remaining_minutes": 22,
+        "projected_finish": "2026-11-06T13:22:16.830269+00:00",
+        "budget_gap": 0.0,
+        "deadline_gap_minutes": 15.0,
+        "feasible": false
+      },
+      {
+        "package": "basic",
+        "estimated_total_cents": 800,
+        "estimated_total": 8.0,
+        "spent_cents": 600,
+        "spent": 6.0,
+        "remaining_minutes": 2,
+        "projected_finish": "2026-11-06T13:02:16.830269+00:00",
+        "budget_gap": 0.0,
+        "deadline_gap_minutes": 0,
+        "feasible": true
+      }
+    ],
+    "published": false,
+    "mode": "real",
+    "model": "qwen2.5:7b-instruct",
+    "steps_used": 16,
+    "max_steps": 16
+  },
+  "trace": [
+    {
+      "step": 1,
+      "action": {
+        "tool": "select_plan",
+        "arguments": {
+          "package": "basic"
+        },
+        "reason": "initial proposal is premium, but estimate_cost is required before proceeding"
+      },
+      "observation": {
+        "status": "selected",
+        "package": "basic",
+        "retained_successful_steps": []
+      },
+      "next_action": "estimate_cost"
+    },
+    {
+      "step": 2,
+      "action": {
+        "tool": "estimate_cost",
+        "arguments": {},
+        "reason": "确定basic方案是否在预算内"
+      },
+      "observation": {
+        "status": "estimated",
+        "package": "basic",
+        "estimated_total_cents": 800,
+        "estimated_total": 8.0,
+        "spent_cents": 0,
+        "spent": 0.0,
+        "remaining_minutes": 13,
+        "projected_finish": "2026-11-06T12:58:16.830269+00:00",
+        "budget_gap": 0.0,
+        "deadline_gap_minutes": 0,
+        "feasible": true,
+        "alternatives": [
+          {
+            "package": "premium",
+            "estimated_total_cents": 1200,
+            "estimated_total": 12.0,
+            "spent_cents": 0,
+            "spent": 0.0,
+            "remaining_minutes": 25,
+            "projected_finish": "2026-11-06T13:10:16.830269+00:00",
+            "budget_gap": 0.0,
+            "deadline_gap_minutes": 3.0,
+            "feasible": false
+          }
+        ]
+      },
+      "next_action": "search_materials"
+    },
+    {
+      "step": 3,
+      "action": {
+        "tool": "search_materials",
+        "arguments": {},
+        "reason": "开始搜索所需材料"
+      },
+      "observation": {
+        "status": "succeeded",
+        "step": "search_materials",
+        "result": {
+          "topic": "秋季新品内容活动",
+          "materials": [
+            {
+              "id": "MAT-01",
+              "title": "产品场景素材",
+              "summary": "展示日常使用情境，避免未经证实的效果承诺。"
+            },
+            {
+              "id": "MAT-02",
+              "title": "用户问答素材",
+              "summary": "用常见问题介绍产品信息，所有表述来自合成资料。"
+            }
+          ]
+        },
+        "charged": 2.0,
+        "spent": 2.0,
+        "operation_complete": false
+      },
+      "next_action": "generate_script"
+    },
+    {
+      "step": 4,
+      "action": {
+        "tool": "generate_script",
+        "arguments": {},
+        "reason": "开始生成剧本"
+      },
+      "observation": {
+        "status": "succeeded",
+        "step": "generate_script:basic",
+        "result": {
+          "package": "basic",
+          "title": "秋季新品内容活动 · 内容活动方案",
+          "script": [
+            {
+              "stage": "开场",
+              "text": "围绕主题介绍目标用户的场景与问题。"
+            },
+            {
+              "stage": "主体",
+              "text": "结合素材：展示日常使用情境，避免未经证实的效果承诺。"
+            },
+            {
+              "stage": "互动",
+              "text": "邀请读者分享体验，收集问题并整理答复。"
+            }
+          ],
+          "material_ids": [
+            "MAT-01",
+            "MAT-02"
+          ],
+          "production_note": "本地合成脚本工具；真实模型负责规划决策，不宣称调用外部内容生产服务。"
+        },
+        "charged": 4.0,
+        "spent": 6.0,
+        "operation_complete": false
+      },
+      "next_action": "estimate_cost"
+    },
+    {
+      "step": 5,
+      "action": {
+        "tool": "estimate_cost",
+        "arguments": {},
+        "reason": "评估当前计划的成本"
+      },
+      "observation": {
+        "status": "estimated",
+        "package": "basic",
+        "estimated_total_cents": 800,
+        "estimated_total": 8.0,
+        "spent_cents": 600,
+        "spent": 6.0,
+        "remaining_minutes": 2,
+        "projected_finish": "2026-11-06T12:59:16.830269+00:00",
+        "budget_gap": 0.0,
+        "deadline_gap_minutes": 0,
+        "feasible": true,
+        "alternatives": [
+          {
+            "package": "premium",
+            "estimated_total_cents": 1600,
+            "estimated_total": 16.0,
+            "spent_cents": 600,
+            "spent": 6.0,
+            "remaining_minutes": 22,
+            "projected_finish": "2026-11-06T13:19:16.830269+00:00",
+            "budget_gap": 0.0,
+            "deadline_gap_minutes": 12.0,
+            "feasible": false
+          }
+        ]
+      },
+      "next_action": "search_materials"
+    },
+    {
+      "step": 6,
+      "action": {
+        "tool": "search_materials",
+        "arguments": {},
+        "reason": "搜索所需材料"
+      },
+      "observation": {
+        "status": "existing",
+        "step": "search_materials",
+        "result": {
+          "topic": "秋季新品内容活动",
+          "materials": [
+            {
+              "id": "MAT-01",
+              "title": "产品场景素材",
+              "summary": "展示日常使用情境，避免未经证实的效果承诺。"
+            },
+            {
+              "id": "MAT-02",
+              "title": "用户问答素材",
+              "summary": "用常见问题介绍产品信息，所有表述来自合成资料。"
+            }
+          ]
+        },
+        "charged": 0
+      },
+      "next_action": "search_materials"
+    },
+    {
+      "step": 7,
+      "action": {
+        "tool": "search_materials",
+        "arguments": {},
+        "reason": "搜索所需材料"
+      },
+      "observation": {
+        "status": "existing",
+        "step": "search_materials",
+        "result": {
+          "topic": "秋季新品内容活动",
+          "materials": [
+            {
+              "id": "MAT-01",
+              "title": "产品场景素材",
+              "summary": "展示日常使用情境，避免未经证实的效果承诺。"
+            },
+            {
+              "id": "MAT-02",
+              "title": "用户问答素材",
+              "summary": "用常见问题介绍产品信息，所有表述来自合成资料。"
+            }
+          ]
+        },
+        "charged": 0
+      },
+      "next_action": "estimate_cost"
+    },
+    {
+      "step": 8,
+      "action": {
+        "tool": "estimate_cost",
+        "arguments": {},
+        "reason": "评估当前计划成本"
+      },
+      "observation": {
+        "status": "estimated",
+        "package": "basic",
+        "estimated_total_cents": 800,
+        "estimated_total": 8.0,
+        "spent_cents": 600,
+        "spent": 6.0,
+        "remaining_minutes": 2,
+        "projected_finish": "2026-11-06T13:00:16.830269+00:00",
+        "budget_gap": 0.0,
+        "deadline_gap_minutes": 0,
+        "feasible": true,
+        "alternatives": [
+          {
+            "package": "premium",
+            "estimated_total_cents": 1600,
+            "estimated_total": 16.0,
+            "spent_cents": 600,
+            "spent": 6.0,
+            "remaining_minutes": 22,
+            "projected_finish": "2026-11-06T13:20:16.830269+00:00",
+            "budget_gap": 0.0,
+            "deadline_gap_minutes": 13.0,
+            "feasible": false
+          }
+        ]
+      },
+      "next_action": "search_materials"
+    },
+    {
+      "step": 9,
+      "action": {
+        "tool": "search_materials",
+        "arguments": {},
+        "reason": "搜索所需材料"
+      },
+      "observation": {
+        "status": "existing",
+        "step": "search_materials",
+        "result": {
+          "topic": "秋季新品内容活动",
+          "materials": [
+            {
+              "id": "MAT-01",
+              "title": "产品场景素材",
+              "summary": "展示日常使用情境，避免未经证实的效果承诺。"
+            },
+            {
+              "id": "MAT-02",
+              "title": "用户问答素材",
+              "summary": "用常见问题介绍产品信息，所有表述来自合成资料。"
+            }
+          ]
+        },
+        "charged": 0
+      },
+      "next_action": "generate_script"
+    },
+    {
+      "step": 10,
+      "action": {
+        "tool": "generate_script",
+        "arguments": {},
+        "reason": "生成内容活动脚本"
+      },
+      "observation": {
+        "status": "existing",
+        "step": "generate_script:basic",
+        "result": {
+          "package": "basic",
+          "title": "秋季新品内容活动 · 内容活动方案",
+          "script": [
+            {
+              "stage": "开场",
+              "text": "围绕主题介绍目标用户的场景与问题。"
+            },
+            {
+              "stage": "主体",
+              "text": "结合素材：展示日常使用情境，避免未经证实的效果承诺。"
+            },
+            {
+              "stage": "互动",
+              "text": "邀请读者分享体验，收集问题并整理答复。"
+            }
+          ],
+          "material_ids": [
+            "MAT-01",
+            "MAT-02"
+          ],
+          "production_note": "本地合成脚本工具；真实模型负责规划决策，不宣称调用外部内容生产服务。"
+        },
+        "charged": 0
+      },
+      "next_action": "estimate_cost"
+    },
+    {
+      "step": 11,
+      "action": {
+        "tool": "estimate_cost",
+        "arguments": {},
+        "reason": "确认基本方案是否在预算和时间内"
+      },
+      "observation": {
+        "status": "estimated",
+        "package": "basic",
+        "estimated_total_cents": 800,
+        "estimated_total": 8.0,
+        "spent_cents": 600,
+        "spent": 6.0,
+        "remaining_minutes": 2,
+        "projected_finish": "2026-11-06T13:01:16.830269+00:00",
+        "budget_gap": 0.0,
+        "deadline_gap_minutes": 0,
+        "feasible": true,
+        "alternatives": [
+          {
+            "package": "premium",
+            "estimated_total_cents": 1600,
+            "estimated_total": 16.0,
+            "spent_cents": 600,
+            "spent": 6.0,
+            "remaining_minutes": 22,
+            "projected_finish": "2026-11-06T13:21:16.830269+00:00",
+            "budget_gap": 0.0,
+            "deadline_gap_minutes": 14.0,
+            "feasible": false
+          }
+        ]
+      },
+      "next_action": "search_materials"
+    },
+    {
+      "step": 12,
+      "action": {
+        "tool": "search_materials",
+        "arguments": {},
+        "reason": "继续搜索材料以生成脚本"
+      },
+      "observation": {
+        "status": "existing",
+        "step": "search_materials",
+        "result": {
+          "topic": "秋季新品内容活动",
+          "materials": [
+            {
+              "id": "MAT-01",
+              "title": "产品场景素材",
+              "summary": "展示日常使用情境，避免未经证实的效果承诺。"
+            },
+            {
+              "id": "MAT-02",
+              "title": "用户问答素材",
+              "summary": "用常见问题介绍产品信息，所有表述来自合成资料。"
+            }
+          ]
+        },
+        "charged": 0
+      },
+      "next_action": "generate_script"
+    },
+    {
+      "step": 13,
+      "action": {
+        "tool": "generate_script",
+        "arguments": {},
+        "reason": "继续生成脚本以完成计划"
+      },
+      "observation": {
+        "status": "existing",
+        "step": "generate_script:basic",
+        "result": {
+          "package": "basic",
+          "title": "秋季新品内容活动 · 内容活动方案",
+          "script": [
+            {
+              "stage": "开场",
+              "text": "围绕主题介绍目标用户的场景与问题。"
+            },
+            {
+              "stage": "主体",
+              "text": "结合素材：展示日常使用情境，避免未经证实的效果承诺。"
+            },
+            {
+              "stage": "互动",
+              "text": "邀请读者分享体验，收集问题并整理答复。"
+            }
+          ],
+          "material_ids": [
+            "MAT-01",
+            "MAT-02"
+          ],
+          "production_note": "本地合成脚本工具；真实模型负责规划决策，不宣称调用外部内容生产服务。"
+        },
+        "charged": 0
+      },
+      "next_action": "estimate_cost"
+    },
+    {
+      "step": 14,
+      "action": {
+        "tool": "estimate_cost",
+        "arguments": {},
+        "reason": "确认当前方案是否在预算和时间内"
+      },
+      "observation": {
+        "status": "estimated",
+        "package": "basic",
+        "estimated_total_cents": 800,
+        "estimated_total": 8.0,
+        "spent_cents": 600,
+        "spent": 6.0,
+        "remaining_minutes": 2,
+        "projected_finish": "2026-11-06T13:02:16.830269+00:00",
+        "budget_gap": 0.0,
+        "deadline_gap_minutes": 0,
+        "feasible": true,
+        "alternatives": [
+          {
+            "package": "premium",
+            "estimated_total_cents": 1600,
+            "estimated_total": 16.0,
+            "spent_cents": 600,
+            "spent": 6.0,
+            "remaining_minutes": 22,
+            "projected_finish": "2026-11-06T13:22:16.830269+00:00",
+            "budget_gap": 0.0,
+            "deadline_gap_minutes": 15.0,
+            "feasible": false
+          }
+        ]
+      },
+      "next_action": "search_materials"
+    },
+    {
+      "step": 15,
+      "action": {
+        "tool": "search_materials",
+        "arguments": {},
+        "reason": "继续搜索材料以生成脚本"
+      },
+      "observation": {
+        "status": "existing",
+        "step": "search_materials",
+        "result": {
+          "topic": "秋季新品内容活动",
+          "materials": [
+            {
+              "id": "MAT-01",
+              "title": "产品场景素材",
+              "summary": "展示日常使用情境，避免未经证实的效果承诺。"
+            },
+            {
+              "id": "MAT-02",
+              "title": "用户问答素材",
+              "summary": "用常见问题介绍产品信息，所有表述来自合成资料。"
+            }
+          ]
+        },
+        "charged": 0
+      },
+      "next_action": "generate_script"
+    },
+    {
+      "step": 16,
+      "action": {
+        "tool": "generate_script",
+        "arguments": {},
+        "reason": "根据基本方案生成脚本"
+      },
+      "observation": {
+        "status": "existing",
+        "step": "generate_script:basic",
+        "result": {
+          "package": "basic",
+          "title": "秋季新品内容活动 · 内容活动方案",
+          "script": [
+            {
+              "stage": "开场",
+              "text": "围绕主题介绍目标用户的场景与问题。"
+            },
+            {
+              "stage": "主体",
+              "text": "结合素材：展示日常使用情境，避免未经证实的效果承诺。"
+            },
+            {
+              "stage": "互动",
+              "text": "邀请读者分享体验，收集问题并整理答复。"
+            }
+          ],
+          "material_ids": [
+            "MAT-01",
+            "MAT-02"
+          ],
+          "production_note": "本地合成脚本工具；真实模型负责规划决策，不宣称调用外部内容生产服务。"
+        },
+        "charged": 0
+      },
+      "next_action": "stop:budget_exhausted"
+    }
+  ],
+  "stored_plan_count": 0,
+  "mode": "real"
+}

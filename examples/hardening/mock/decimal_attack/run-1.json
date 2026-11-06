@@ -1,0 +1,9 @@
+{
+  "output": {
+    "status": "input_rejected",
+    "error": "invalid_input"
+  },
+  "trace": [],
+  "stored_plan_count": 0,
+  "mode": "mock"
+}

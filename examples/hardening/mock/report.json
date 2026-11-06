@@ -1,0 +1,70 @@
+{
+  "mode": "mock",
+  "cases": [
+    {
+      "name": "custom_package",
+      "checks": {
+        "expected_terminal": true,
+        "actual_save": true,
+        "catalog_package": true
+      },
+      "passed": true
+    },
+    {
+      "name": "deadline_forces_basic",
+      "checks": {
+        "expected_terminal": true,
+        "actual_save": true,
+        "faster_alternative": true
+      },
+      "passed": true
+    },
+    {
+      "name": "blank_constraints",
+      "checks": {
+        "expected_terminal": true
+      },
+      "passed": true
+    },
+    {
+      "name": "decimal_attack",
+      "checks": {
+        "expected_terminal": true
+      },
+      "passed": true
+    },
+    {
+      "name": "one_cent_short",
+      "checks": {
+        "expected_terminal": true
+      },
+      "passed": true
+    },
+    {
+      "name": "save_resume",
+      "checks": {
+        "expected_terminal": true,
+        "actual_save": true,
+        "retained_script": true
+      },
+      "passed": true
+    },
+    {
+      "name": "expired_resume",
+      "checks": {
+        "expected_terminal": true,
+        "no_charge_after_deadline": true
+      },
+      "passed": true
+    },
+    {
+      "name": "free_tools",
+      "checks": {
+        "expected_terminal": true,
+        "actual_save": true
+      },
+      "passed": true
+    }
+  ],
+  "passed": true
+}

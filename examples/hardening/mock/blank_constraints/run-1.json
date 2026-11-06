@@ -1,0 +1,48 @@
+{
+  "output": {
+    "request_id": "blank_constraints",
+    "status": "needs_information",
+    "reason": "missing_required_inputs",
+    "topic": "秋季新品内容活动",
+    "missing": [
+      "budget",
+      "deadline"
+    ],
+    "package": null,
+    "task_plan": [
+      {
+        "step": "search_materials",
+        "depends_on": []
+      },
+      {
+        "step": "generate_script:None",
+        "depends_on": [
+          "search_materials"
+        ]
+      },
+      {
+        "step": "save_plan",
+        "depends_on": [
+          "generate_script:None"
+        ]
+      }
+    ],
+    "steps": {},
+    "tool_events": [],
+    "actual_cost": 0.0,
+    "actual_cost_cents": 0,
+    "simulated_elapsed_minutes": 0,
+    "plan_id": null,
+    "save_status": "not_saved",
+    "saved_plan": null,
+    "options": [],
+    "published": false,
+    "mode": "mock",
+    "model": "offline-state-policy-v1",
+    "steps_used": 0,
+    "max_steps": 16
+  },
+  "trace": [],
+  "stored_plan_count": 0,
+  "mode": "mock"
+}

@@ -12,6 +12,18 @@ test_stale_owner_cannot_write_or_release_new_lease (test_edges.EdgeTests) ... ok
 test_step_limit_after_save_preserves_saved_truth (test_edges.EdgeTests) ... ok
 test_tool_injection_cannot_increase_budget (test_edges.EdgeTests) ... ok
 test_true_subprocess_failure_resume (test_edges.EdgeTests) ... ok
+test_blank_constraints_return_missing_without_work (test_hardening.HardeningTests) ... ok
+test_budget_one_cent_below_plan_no_paid_execution (test_hardening.HardeningTests) ... ok
+test_custom_package_names_complete (test_hardening.HardeningTests) ... ok
+test_custom_schema_progresses_to_save_without_repeating_success (test_hardening.HardeningTests) ... ok
+test_different_request_keys_do_not_share_failure_counter (test_hardening.HardeningTests) ... ok
+test_failed_save_resume_after_deadline_preserves_script (test_hardening.HardeningTests) ... ok
+test_long_decimal_cannot_round_into_budget (test_hardening.HardeningTests) ... ok
+test_malformed_price_table_has_validation_error (test_hardening.HardeningTests) ... ok
+test_schema_preserves_budget_replan_and_failure_stop_choices (test_hardening.HardeningTests) ... ok
+test_tiny_nonzero_amount_not_rounded_to_zero (test_hardening.HardeningTests) ... ok
+test_two_real_threads_same_key_only_one_writer (test_hardening.HardeningTests) ... ok
+test_zero_cost_catalog_keeps_exact_ledger (test_hardening.HardeningTests) ... ok
 test_budget_cannot_be_evaded_by_replanning (test_planning.PlanningTests) ... ok
 test_catalog_edit_cannot_reuse_old_state (test_planning.PlanningTests) ... ok
 test_completed_historical_plan_can_be_read_after_deadline (test_planning.PlanningTests) ... ok
@@ -58,6 +70,6 @@ test_restart_retains_business_state (test_web.WebTests) ... ok
 test_resume_failure_uses_same_inputs (test_web.WebTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 58 tests in 17.946s
+Ran 70 tests in 13.768s
 
 OK
