@@ -143,6 +143,18 @@ def make_server(app, port=8767):
 
         def do_POST(self):
             try:
+                # Drain a bounded request before replying. Closing a socket with unread
+                # POST bytes can reset the connection on Windows instead of returning 403.
+                try:
+                    length = int(self.headers.get("Content-Length", "0"))
+                except ValueError:
+                    raise APIError(400, "请求长度无效") from None
+                if not 0 < length <= LIMIT:
+                    raise APIError(413, "请求为空或超过 256 KB")
+                self.connection.settimeout(10)
+                raw = self.rfile.read(length)
+                if len(raw) != length:
+                    raise APIError(400, "请求体不完整")
                 self.check_host()
                 origin = self.headers.get("Origin")
                 if origin and origin != "http://" + self.headers.get("Host", ""):
@@ -151,16 +163,9 @@ def make_server(app, port=8767):
                     raise APIError(403, "页面会话已过期，请刷新后重试")
                 if self.headers.get_content_type() != "application/json":
                     raise APIError(415, "请使用 JSON 请求")
-                try:
-                    length = int(self.headers.get("Content-Length", "0"))
-                except ValueError:
-                    raise APIError(400, "请求长度无效") from None
-                if not 0 < length <= LIMIT:
-                    raise APIError(413, "请求为空或超过 256 KB")
-                self.connection.settimeout(10)
                 def invalid_constant(value):
                     raise ValueError("JSON 不允许非有限数字")
-                payload = json.loads(self.rfile.read(length).decode("utf-8"), parse_constant=invalid_constant)
+                payload = json.loads(raw.decode("utf-8"), parse_constant=invalid_constant)
                 path = urlsplit(self.path).path
                 if path == "/api/jobs":
                     self.json(202, app.start(payload))

@@ -1,0 +1,135 @@
+{
+  "mode": "mock",
+  "started_at": "2026-11-06T08:26:21.873763+00:00",
+  "cases": [
+    {
+      "name": "normal",
+      "checks": {
+        "ledger_exact": true,
+        "within_budget": true,
+        "no_fake_save": true,
+        "completed": true,
+        "unique_plan": true
+      },
+      "passed": true,
+      "states": [
+        "completed"
+      ]
+    },
+    {
+      "name": "reference",
+      "checks": {
+        "ledger_exact": true,
+        "within_budget": true,
+        "no_fake_save": true,
+        "completed": true,
+        "unique_plan": true,
+        "observed_twelve_then_eight": true,
+        "cost_eight": true,
+        "repeated_no_work": true
+      },
+      "passed": true,
+      "states": [
+        "completed",
+        "completed"
+      ]
+    },
+    {
+      "name": "missing",
+      "checks": {
+        "ledger_exact": true,
+        "within_budget": true,
+        "no_fake_save": true,
+        "no_work": true
+      },
+      "passed": true,
+      "states": [
+        "needs_information"
+      ]
+    },
+    {
+      "name": "tool_failure",
+      "checks": {
+        "ledger_exact": true,
+        "within_budget": true,
+        "no_fake_save": true,
+        "completed": true,
+        "unique_plan": true,
+        "actual_failure": true,
+        "retained_search": true
+      },
+      "passed": true,
+      "states": [
+        "completed"
+      ]
+    },
+    {
+      "name": "over_budget",
+      "checks": {
+        "ledger_exact": true,
+        "within_budget": true,
+        "no_fake_save": true,
+        "infeasible": true,
+        "no_spending": true
+      },
+      "passed": true,
+      "states": [
+        "infeasible"
+      ]
+    },
+    {
+      "name": "deadline",
+      "checks": {
+        "ledger_exact": true,
+        "within_budget": true,
+        "no_fake_save": true,
+        "infeasible": true,
+        "no_spending": true
+      },
+      "passed": true,
+      "states": [
+        "infeasible"
+      ]
+    },
+    {
+      "name": "resume",
+      "checks": {
+        "ledger_exact": true,
+        "within_budget": true,
+        "no_fake_save": true,
+        "completed": true,
+        "unique_plan": true,
+        "actual_failure": true,
+        "retained_search": true,
+        "cost_eight": true,
+        "separate_run_resume": true
+      },
+      "passed": true,
+      "states": [
+        "failed",
+        "completed"
+      ]
+    },
+    {
+      "name": "save_failure",
+      "checks": {
+        "ledger_exact": true,
+        "within_budget": true,
+        "no_fake_save": true,
+        "completed": true,
+        "unique_plan": true,
+        "actual_failure": true,
+        "retained_search": true,
+        "cost_eight": true,
+        "separate_run_resume": true
+      },
+      "passed": true,
+      "states": [
+        "failed",
+        "completed"
+      ]
+    }
+  ],
+  "passed": true,
+  "finished_at": "2026-11-06T08:26:22.548289+00:00"
+}

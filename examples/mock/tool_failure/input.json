@@ -1,0 +1,55 @@
+{
+  "request": {
+    "request_id": "tool_failure-34e58a93899b",
+    "topic": "秋季新品内容活动",
+    "budget": 20,
+    "deadline": "2026-11-07T08:26:22.088902+00:00"
+  },
+  "catalog": {
+    "version": "synthetic-v1",
+    "materials": [
+      {
+        "id": "MAT-01",
+        "title": "产品场景素材",
+        "summary": "展示日常使用情境，避免未经证实的效果承诺。"
+      },
+      {
+        "id": "MAT-02",
+        "title": "用户问答素材",
+        "summary": "用常见问题介绍产品信息，所有表述来自合成资料。"
+      }
+    ],
+    "packages": {
+      "premium": {
+        "label": "精细方案",
+        "script_cost": 8,
+        "script_minutes": 20
+      },
+      "basic": {
+        "label": "精简方案",
+        "script_cost": 4,
+        "script_minutes": 8
+      }
+    },
+    "tools": {
+      "search_materials": {
+        "cost": 2,
+        "minutes": 3
+      },
+      "estimate_cost": {
+        "cost": 0,
+        "minutes": 1
+      },
+      "save_plan": {
+        "cost": 2,
+        "minutes": 2
+      }
+    },
+    "failure_minutes": 1,
+    "failures": {
+      "generate_script:premium": 1
+    }
+  },
+  "mode": "mock",
+  "max_steps": 16
+}

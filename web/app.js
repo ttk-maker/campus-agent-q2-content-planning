@@ -11,6 +11,8 @@ async function api(path, data) {
 function notice(message,error=false){el("notice").textContent=message;el("notice").classList.toggle("error",error);}
 function busy(value){active=value;for(const id of ["run","resume","scenario","new-id"])el(id).disabled=value;el("state").textContent=value?"规划中…":el("state").textContent;}
 function loadPayload(p){
+  const key=Object.keys(boot.scenarios).find(name=>p.request.request_id.startsWith(name+"-"));
+  if(key)el("scenario").value=key;
   el("topic").value=p.request.topic;el("budget").value=p.request.budget??"";
   const d=p.request.deadline?new Date(p.request.deadline):null;
   el("deadline").value=d?new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,16):"";

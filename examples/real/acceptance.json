@@ -1,0 +1,69 @@
+{
+  "mode": "real",
+  "started_at": "2026-11-06T08:24:35.559518+00:00",
+  "cases": [
+    {
+      "name": "reference",
+      "checks": {
+        "ledger_exact": true,
+        "within_budget": true,
+        "no_fake_save": true,
+        "completed": true,
+        "unique_plan": true,
+        "observed_twelve_then_eight": true,
+        "cost_eight": true,
+        "repeated_no_work": true
+      },
+      "passed": true,
+      "states": [
+        "completed",
+        "completed"
+      ]
+    },
+    {
+      "name": "tool_failure",
+      "checks": {
+        "ledger_exact": true,
+        "within_budget": true,
+        "no_fake_save": true,
+        "completed": false,
+        "unique_plan": false,
+        "actual_failure": true,
+        "retained_search": true
+      },
+      "passed": false,
+      "states": [
+        "budget_exhausted"
+      ]
+    },
+    {
+      "name": "over_budget",
+      "checks": {
+        "ledger_exact": true,
+        "within_budget": true,
+        "no_fake_save": true,
+        "infeasible": true,
+        "no_spending": true
+      },
+      "passed": true,
+      "states": [
+        "infeasible"
+      ]
+    },
+    {
+      "name": "missing",
+      "checks": {
+        "ledger_exact": true,
+        "within_budget": true,
+        "no_fake_save": true,
+        "no_work": true
+      },
+      "passed": true,
+      "states": [
+        "needs_information"
+      ]
+    }
+  ],
+  "passed": false,
+  "finished_at": "2026-11-06T08:36:24.190397+00:00"
+}

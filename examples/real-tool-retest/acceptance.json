@@ -1,0 +1,24 @@
+{
+  "mode": "real",
+  "started_at": "2026-11-06T08:37:20.484548+00:00",
+  "cases": [
+    {
+      "name": "tool_failure",
+      "checks": {
+        "ledger_exact": true,
+        "within_budget": true,
+        "no_fake_save": true,
+        "completed": true,
+        "unique_plan": true,
+        "actual_failure": true,
+        "retained_search": true
+      },
+      "passed": true,
+      "states": [
+        "completed"
+      ]
+    }
+  ],
+  "passed": true,
+  "finished_at": "2026-11-06T08:41:31.444992+00:00"
+}

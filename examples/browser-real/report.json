@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-11-06T08:45:10.050Z",
+  "passed": true,
+  "request_id": "normal-dcced5dc-f7bf-4775-abc8-9eaab53539de",
+  "refresh_restored": true,
+  "status": "completed",
+  "cost": 12,
+  "steps": 7,
+  "errors": []
+}

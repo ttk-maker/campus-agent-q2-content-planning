@@ -15,6 +15,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - run: python -m scripts.test_report
       - run: python -m scripts.evaluate --output runtime/ci-examples
+      - run: python -m scripts.verify_evidence
       - uses: actions/upload-artifact@v4
         if: always()
         with:

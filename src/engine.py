@@ -80,7 +80,10 @@ class Engine:
             return {"status":"selected","package":package,"retained_successful_steps":
                     [k for k,v in state["steps"].items() if v["status"]=="succeeded"]}
         if tool not in ("search_materials","generate_script","estimate_cost","save_plan") or args:
-            return {"status":"rejected","error":"invalid_tool_or_arguments"}
+            return {"status":"rejected","error":"invalid_tool_or_arguments",
+                    "allowed_tools":["select_plan","estimate_cost","search_materials","generate_script","save_plan","finish"],
+                    "expected_arguments":{} if tool in ("search_materials","generate_script","estimate_cost","save_plan") else None,
+                    "detail":"These four tools take empty arguments. Package comes from select_plan; do not pass package again."}
         package=state["package"]
         if not package: return {"status":"rejected","error":"select_plan_first"}
         if tool=="estimate_cost":

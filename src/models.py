@@ -11,6 +11,9 @@ generate_script: {}
 save_plan: {}
 finish: {"outcome":"completed"} or {"outcome":"infeasible"} or {"outcome":"failed"}.
 No other tools. State contains durable successful and failed steps, costs, deadlines and packages.
+IMPORTANT: generate_script takes arguments={} even after changing package. Never put package
+inside generate_script arguments. The selected_package in CURRENT_STATE determines its package.
+If a tool rejects arguments, correct them using expected_arguments in the observation.
 The content team's INITIAL PROPOSAL is premium. When selected_package is null,
 your first action must be select_plan with package premium; evaluate it before replacing it.
 Then call estimate_cost. This is free
