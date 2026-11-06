@@ -1,0 +1,23 @@
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const fs=require('node:fs');const path=require('node:path');
+const base=process.env.WEB_URL||'http://127.0.0.1:8768';
+const out=process.env.BROWSER_OUTPUT||'examples/browser-real';fs.mkdirSync(out,{recursive:true});
+(async()=>{
+ const browser=await chromium.launch(process.env.PLAYWRIGHT_CHANNEL?{channel:process.env.PLAYWRIGHT_CHANNEL,headless:true}:{headless:true});
+ const page=await browser.newPage({viewport:{width:1440,height:1100}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(base);await page.waitForFunction(()=>document.querySelector('#scenario').options.length>0);
+ await page.selectOption('#scenario','normal');await page.selectOption('#mode','real');
+ const requestId=await page.inputValue('#request-id');await page.click('#run');
+ await page.waitForFunction(()=>!!localStorage.getItem('q2-job'));await page.reload();
+ await page.waitForFunction(()=>document.querySelector('#run').disabled);
+ const restored=(await page.inputValue('#request-id'))===requestId && (await page.inputValue('#mode'))==='real';
+ await page.waitForFunction(()=>!document.querySelector('#run').disabled,{},{timeout:1500000});
+ const id=await page.evaluate(()=>localStorage.getItem('q2-job'));
+ const job=await(await page.request.get(base+'/api/jobs/'+id)).json();
+ fs.writeFileSync(path.join(out,'job.json'),JSON.stringify(job,null,2));
+ await page.locator('.results details').evaluate(n=>n.open=false);
+ await page.screenshot({path:path.join(out,'real-workbench.png'),fullPage:true});
+ const passed=job.state==='done'&&job.result.mode==='real'&&job.result.status==='completed'&&job.result.actual_cost===12&&job.result.save_status==='saved'&&restored&&errors.length===0;
+ fs.writeFileSync(path.join(out,'report.json'),JSON.stringify({timestamp:new Date().toISOString(),passed,request_id:requestId,refresh_restored:restored,status:job.result?.status,cost:job.result?.actual_cost,steps:job.result?.steps_used,errors},null,2));
+ await browser.close();console.log(JSON.stringify({passed,status:job.result?.status,steps:job.result?.steps_used,errors}));if(!passed)process.exit(1);
+})().catch(e=>{console.error(e);process.exit(1)});

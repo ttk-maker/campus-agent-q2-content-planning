@@ -1,0 +1,8 @@
+{
+  "name": "campus-agent-q2-content-planning",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Optional browser testing dependencies; application runtime is Python stdlib",
+  "scripts": {"test:browser": "node scripts/browser-smoke.cjs"},
+  "devDependencies": {"playwright": "1.65.0"}
+}

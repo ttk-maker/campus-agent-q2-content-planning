@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>内容任务规划 · Agent 工作台</title><link rel="stylesheet" href="/style.css"><script defer src="/app.js"></script></head>
+<body><header class="topbar"><a class="brand" href="/">C / CONTENT OPS <span>项目 02</span></a><a href="/manual.html">使用手册 ↗</a></header>
+<main><section class="hero"><div><p class="eyebrow">PLAN / ADAPT / KEEP PROGRESS</p><h1>约束之内，把方案做完。</h1><p class="intro">让 Agent 比较成本、调整计划，并保留每一步成果。<br>预算与截止时间由你决定，执行结果有据可查。</p></div><aside class="hero-note"><span class="dot"></span> 本地内容工作台<p>只保存活动方案<br>费用与耗时均为模拟单位</p></aside></section>
+<div class="workspace"><section class="card setup"><div class="section-heading"><h2>01 / 活动需求</h2><span class="tag">输入与边界</span></div>
+<label for="scenario">从场景开始</label><select id="scenario"></select><p class="help">选择场景会创建新的请求。重试请用结果区的续跑按钮。</p>
+<form id="plan-form"><label for="topic">活动主题</label><textarea id="topic" rows="2" maxlength="1000" required></textarea>
+<div class="fields"><div><label for="budget">预算 / 模拟单位</label><input id="budget" type="number" min="0" max="100000" step="0.01" placeholder="留空测试信息不足"></div><div><label for="deadline">截止时间 / 本地时区</label><input id="deadline" type="datetime-local"></div></div>
+<label for="mode">决策方式</label><select id="mode"><option value="mock">离线演练 · 不代表模型效果</option><option value="real">真实模型 · 本地 Qwen</option></select>
+<p class="help" id="model-info"></p><details><summary>请求与工具配置</summary><label for="request-id">请求 ID</label><input id="request-id" maxlength="128" required><div class="inline"><button type="button" id="new-id" class="secondary">生成新 ID</button><span class="help">修改输入后应使用新 ID</span></div><label for="max-steps">单次执行步数上限</label><input id="max-steps" type="number" min="1" max="100" value="16"><label for="catalog">合成素材、费用与故障注入 / JSON</label><textarea id="catalog" rows="10" spellcheck="false"></textarea></details>
+<button id="run" class="primary" type="submit">开始规划 <span>→</span></button></form><p id="notice" role="status" aria-live="polite">正在连接本地服务…</p></section>
+<section class="card results"><div class="section-heading"><h2>02 / 执行结果</h2><span class="tag" id="state">等待开始</span></div>
+<div class="metrics"><div><small>实际费用</small><strong id="cost">—</strong></div><div><small>已选方案</small><strong id="package">—</strong></div><div><small>保存状态</small><strong id="saved">未开始</strong></div></div>
+<div id="empty" class="empty"><span>↗</span><h3>计划会调整，成果不丢失。</h3><p>试试预算 10 的示例：首选方案估算 12，<br>观察超限后改选 8 的方案，再执行与保存。</p></div>
+<div id="result" hidden><p id="reason" class="result-reason"></p><h3>任务步骤与依赖</h3><div id="steps"></div><div id="options"></div><div id="plan"></div><div class="actions"><button id="resume" class="primary" type="button">续跑 / 重复执行原请求</button><button id="download" class="secondary" type="button">导出运行记录</button></div><p class="help">续跑复用原始输入及工具配置。成功步骤不重做；已保存方案重复执行不新增费用。</p><details open><summary>动作与工具观察</summary><div id="trace"></div></details></div></section></div>
+<section class="card archive"><div class="section-heading"><h2>03 / 已保存方案</h2><button type="button" class="secondary" id="refresh-plans">刷新列表</button></div><div id="plans">加载中…</div></section>
+<footer>预算守卫 · 步骤依赖 · 持久状态 · 失败续跑 <span>本地网页 :8767 / 模型 API :11434</span></footer></main></body></html>
