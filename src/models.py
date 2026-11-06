@@ -1,10 +1,11 @@
 """Explicit offline policy and real model planner."""
+from copy import deepcopy
 from .transport import HTTPTransport, ModelError
 
 PROMPT = """You plan content activities within a hard budget and deadline.
 Return exactly one JSON object: {"tool":"NAME","arguments":{},"reason":"short factual justification"}.
 Allowed actions:
-select_plan: {"package":"premium"} or {"package":"basic"} (use catalog names).
+select_plan: {"package":"exact catalog package name"}.
 estimate_cost: {}
 search_materials: {}
 generate_script: {}
@@ -14,8 +15,9 @@ No other tools. State contains durable successful and failed steps, costs, deadl
 IMPORTANT: generate_script takes arguments={} even after changing package. Never put package
 inside generate_script arguments. The selected_package in CURRENT_STATE determines its package.
 If a tool rejects arguments, correct them using expected_arguments in the observation.
-The content team's INITIAL PROPOSAL is premium. When selected_package is null,
-your first action must be select_plan with package premium; evaluate it before replacing it.
+When selected_package is null, prefer premium ONLY when it exists in the catalog;
+otherwise select an actual catalog package.
+Never invent a package name. Evaluate the selected proposal before replacing it.
 Then call estimate_cost. This is free
 and allows comparing the preferred plan before paid work. If estimate is over budget or too
 late, select an available feasible alternative (usually basic), then estimate_cost again.
@@ -37,6 +39,44 @@ Respond with JSON only, one action at a time. The next turn includes actual tool
 class HTTPModel(HTTPTransport):
     def __init__(self):
         super().__init__(PROMPT)
+
+    def decide(self,context):
+        context=deepcopy(context)
+        state=context['snapshot'];package=state['selected_package'];steps=state['steps']
+        packages=list(state['catalog']['packages'])
+        failed=any(s['status']=='failed' for s in steps.values())
+        alternatives=[p for p in packages if p!=package]
+        outcomes=[]
+        if state['plan_id']:
+            allowed=['finish'];outcomes=['completed']
+        elif not package:
+            allowed=['select_plan']
+        elif state['estimated_package']!=package:
+            allowed=['estimate_cost']
+        else:
+            quote=next(q for q in state['options'] if q['package']==package)
+            if not quote['feasible']:
+                allowed=['select_plan'] if alternatives else []
+                if not any(q['feasible'] for q in state['options']):outcomes=['infeasible']
+            else:
+                search_done=steps.get('search_materials',{}).get('status')=='succeeded'
+                script_done=steps.get('generate_script:'+package,{}).get('status')=='succeeded'
+                allowed=['search_materials' if not search_done else 'generate_script' if not script_done else 'save_plan']
+                if failed and alternatives:allowed.append('select_plan')
+            if failed:outcomes.append('failed')
+            if outcomes:allowed.append('finish')
+        state['available_actions']=allowed
+        state['current_dependencies']={'search':steps.get('search_materials',{}).get('status','pending'),
+                                       'selected_script':steps.get('generate_script:'+str(package),{}).get('status','pending')}
+        variants=[]
+        for tool in allowed:
+            arguments={'type':'object','properties':{},'additionalProperties':False,'required':[]}
+            if tool=='select_plan':arguments.update(properties={'package':{'type':'string','enum':alternatives or packages}},required=['package'])
+            if tool=='finish':arguments.update(properties={'outcome':{'type':'string','enum':outcomes}},required=['outcome'])
+            variants.append({'type':'object','properties':{'tool':{'type':'string','enum':[tool]},'arguments':arguments,'reason':{'type':'string'}},
+                             'required':['tool','arguments','reason'],'additionalProperties':False})
+        self.response_format={'type':'json_schema','json_schema':{'name':'planning_action','strict':True,'schema':{'anyOf':variants}}}
+        return super().decide(context)
 
 
 class MockModel:

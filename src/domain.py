@@ -22,15 +22,19 @@ def instant(value):
 
 
 def cents(value):
-    if isinstance(value, bool):
+    if isinstance(value, bool) or len(str(value)) > 80:
         raise ValueError("budget must be a number")
     try:
         amount = Decimal(str(value))
-        if not amount.is_finite() or amount < 0 or amount > 100000 or amount * 100 != (amount * 100).to_integral_value():
+        if not amount.is_finite() or amount < 0 or amount > 100000 or amount != amount.quantize(Decimal('0.01')):
             raise ValueError("amount must be nonnegative with at most two decimals")
         return int(amount * 100)
     except InvalidOperation:
         raise ValueError("invalid amount") from None
+
+
+def is_missing(value):
+    return value is None or (isinstance(value, str) and not value.strip())
 
 
 def validate_request(request):
@@ -40,7 +44,7 @@ def validate_request(request):
         raise ValueError("request_id must be 1..128 characters")
     if not isinstance(request.get("topic"), str) or not 1 <= len(request["topic"].strip()) <= 1000:
         raise ValueError("topic is required (1..1000 characters)")
-    missing = [key for key in ("budget", "deadline") if request.get(key) in (None, "")]
+    missing = [key for key in ("budget", "deadline") if is_missing(request.get(key))]
     if "budget" not in missing:
         cents(request["budget"])
     if "deadline" not in missing:
@@ -66,15 +70,17 @@ def validate_catalog(catalog):
     packages=catalog["packages"]
     if not isinstance(packages,dict) or not 1 <= len(packages) <= 5:
         raise ValueError("1..5 packages required")
-    if set(catalog["tools"])!={"search_materials","estimate_cost","save_plan"}:
+    if not isinstance(catalog["tools"],dict) or set(catalog["tools"])!={"search_materials","estimate_cost","save_plan"}:
         raise ValueError("invalid tool cost table")
     for name, package in packages.items():
         if not isinstance(name,str) or not 1<=len(name)<=40 or not isinstance(package,dict):
             raise ValueError("invalid package")
+        if not {"script_cost","script_minutes"} <= set(package):raise ValueError("incomplete package price table")
         cents(package["script_cost"])
         if type(package["script_minutes"]) is not int or not 1<=package["script_minutes"]<=1440:
             raise ValueError("invalid script duration")
     for tool in catalog["tools"].values():
+        if not isinstance(tool,dict) or not {"cost","minutes"} <= set(tool):raise ValueError("incomplete tool price table")
         cents(tool["cost"])
         if type(tool["minutes"]) is not int or not 0<=tool["minutes"]<=1440:
             raise ValueError("invalid tool duration")
@@ -93,6 +99,6 @@ def validate_catalog(catalog):
 
 def fingerprint(request, catalog):
     normalized=dict(request)
-    if request.get("budget") not in (None,""): normalized["budget"]=cents(request["budget"])
-    if request.get("deadline") not in (None,""): normalized["deadline"]=instant(request["deadline"]).isoformat()
+    if not is_missing(request.get("budget")): normalized["budget"]=cents(request["budget"])
+    if not is_missing(request.get("deadline")): normalized["deadline"]=instant(request["deadline"]).isoformat()
     return digest([normalized,catalog])

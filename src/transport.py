@@ -50,7 +50,7 @@ class HTTPTransport:
                     {"role": "user", "content": json.dumps({"recent_observations": history, "CURRENT_STATE": state},
                                                             ensure_ascii=False, separators=(",", ":"))}]
         payload = json.dumps({"model": self.name, "messages": messages, "temperature": 0, "max_tokens": 256,
-                              "response_format": {"type": "json_object"}}).encode()
+                              "response_format": getattr(self, "response_format", {"type": "json_object"})}).encode()
         headers = {"Content-Type": "application/json"}
         if self.key:
             headers["Authorization"] = "Bearer " + self.key

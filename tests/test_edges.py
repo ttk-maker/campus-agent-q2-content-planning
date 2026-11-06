@@ -122,4 +122,4 @@ class EdgeTests(unittest.TestCase):
         with patch("urllib.request.build_opener") as opener:
             opener.return_value.open.return_value=BytesIO(b'{"choices":[{"message":{"content":"not JSON"}}]}')
             with self.assertRaisesRegex(ModelError,"model_request_failed:JSONDecodeError"):
-                model.decide({"snapshot":{"steps":{},"estimated_package":None},"history":[]})
+                model.decide({"snapshot":{"steps":{},"estimated_package":None,"selected_package":None,"catalog":{"packages":{"basic":{}}},"plan_id":None},"history":[]})

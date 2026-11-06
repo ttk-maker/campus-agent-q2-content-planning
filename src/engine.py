@@ -4,7 +4,7 @@ from datetime import datetime, timedelta, timezone
 import json
 import sqlite3
 
-from .domain import cents, digest, instant
+from .domain import cents, digest, instant, is_missing
 
 
 class Engine:
@@ -34,7 +34,7 @@ class Engine:
 
     def view(self):
         state=self.store.get(self.request_id)
-        missing=[k for k in ("budget","deadline") if state["request"].get(k) in (None,"")]
+        missing=[k for k in ("budget","deadline") if is_missing(state["request"].get(k))]
         quotes=[] if missing else [self.quote(state,p) for p in state["catalog"]["packages"]]
         return {"request":state["request"],"selected_package":state["package"],
                 "estimated_package":state["estimate_package"],
@@ -69,7 +69,7 @@ class Engine:
     def _apply(self,state,db,tool,args):
         if state["plan_id"]:
             return {"status":"existing","plan_id":state["plan_id"],"operation_complete":True}
-        missing=[k for k in ("budget","deadline") if state["request"].get(k) in (None,"")]
+        missing=[k for k in ("budget","deadline") if is_missing(state["request"].get(k))]
         if missing: return {"status":"rejected","error":"missing_inputs","missing":missing}
         if tool=="select_plan" and set(args)=={"package"}:
             package=args["package"]
@@ -157,7 +157,7 @@ class Engine:
 
     def result(self,status,reason=None):
         state=self.store.get(self.request_id)
-        missing=[k for k in ("budget","deadline") if state["request"].get(k) in (None,"")]
+        missing=[k for k in ("budget","deadline") if is_missing(state["request"].get(k))]
         options=[] if missing or state["plan_id"] else [self.quote(state,p) for p in state["catalog"]["packages"]]
         return {"request_id":self.request_id,"status":status,"reason":reason,
                 "topic":state["request"]["topic"],"missing":missing,"package":state["package"],
