@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1130" viewBox="0 0 1600 1130">
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8" fill="#748178"/></marker></defs>
+<rect width="1600" height="1130" fill="#f3f5f2"/>
+<text x="45" y="45" font-family="Microsoft YaHei,sans-serif" font-size="15" fill="#557862" font-weight="600">CAMPUS AGENT / PROJECT 02</text>
+<text x="45" y="92" font-family="Microsoft YaHei,sans-serif" font-size="32" fill="#253c32" font-weight="600">内容任务规划 · 在约束内重规划，保留每一步成果</text>
+<text x="45" y="128" font-family="Microsoft YaHei,sans-serif" font-size="19" fill="#5e7367" font-weight="400">仅生成内容活动方案；模型决策、费用记账、步骤状态与保存事实分开。</text>
+<rect x="40" y="160" width="1520" height="300" rx="14" fill="#fff" stroke="#d5ded7"/>
+<text x="60" y="194" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">01  有状态的模型—工具循环</text>
+<rect x="65" y="235" width="325" height="150" rx="14" fill="#fff" stroke="#d5ded7"/>
+<text x="85" y="269" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">输入与约束</text>
+<text x="85" y="300" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">主题 / 预算 / 截止时间</text>
+<text x="85" y="327" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">P1：缺预算或截止则待补充</text>
+<rect x="435" y="235" width="325" height="150" rx="14" fill="#e9edff" stroke="#d5ded7"/>
+<text x="455" y="269" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">模型选计划与动作</text>
+<text x="455" y="300" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">先估算，再选择执行或替代</text>
+<text x="455" y="327" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">工具结果返回后调整下一步</text>
+<rect x="805" y="235" width="325" height="150" rx="14" fill="#fff" stroke="#d5ded7"/>
+<text x="825" y="269" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">工具执行与守卫</text>
+<text x="825" y="300" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">检索 → 脚本 → 保存</text>
+<text x="825" y="327" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">P2/P3：预算、时间、依赖</text>
+<rect x="1175" y="235" width="325" height="150" rx="14" fill="#e6f2e9" stroke="#d5ded7"/>
+<text x="1195" y="269" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">持久状态与账本</text>
+<text x="1195" y="300" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">成功结果 / 失败次数 / 实际费用</text>
+<text x="1195" y="327" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">P4/P5：幂等、租约、续跑</text>
+<polyline points="390,310 435,310" fill="none" stroke="#748178" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="760,310 805,310" fill="none" stroke="#748178" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1130,310 1175,310" fill="none" stroke="#748178" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1335,385 1335,424 595,424 595,385" fill="none" stroke="#748178" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="770" y="414" font-family="Microsoft YaHei,sans-serif" font-size="16" fill="#5464a1" font-weight="400">观察真实状态 → 再决策</text>
+<rect x="40" y="485" width="745" height="270" rx="14" fill="#fff" stroke="#d5ded7"/>
+<text x="60" y="519" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">02  参考实例 · 预算 10</text>
+<rect x="65" y="555" width="200" height="100" rx="14" fill="#fff0df" stroke="#d5ded7"/>
+<text x="85" y="589" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">premium 估算 12</text>
+<text x="85" y="620" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">预算缺口 2，不执行</text>
+<rect x="310" y="555" width="200" height="100" rx="14" fill="#e9edff" stroke="#d5ded7"/>
+<text x="330" y="589" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">改选 basic</text>
+<text x="330" y="620" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">再次估算 8，满足约束</text>
+<rect x="555" y="555" width="205" height="100" rx="14" fill="#e6f2e9" stroke="#d5ded7"/>
+<text x="575" y="589" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">执行并保存</text>
+<text x="575" y="620" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">实际费用合计 8</text>
+<polyline points="265,605 310,605" fill="none" stroke="#748178" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="510,605 555,605" fill="none" stroke="#748178" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="65" y="702" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#253c32" font-weight="400">换方案不抹掉已花费用；没有可行方案就返回缺口与未完成原因。</text>
+<rect x="810" y="485" width="750" height="270" rx="14" fill="#fff" stroke="#d5ded7"/>
+<text x="830" y="519" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">03  失败与续跑</text>
+<rect x="835" y="555" width="210" height="100" rx="14" fill="#e6f2e9" stroke="#d5ded7"/>
+<text x="855" y="589" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">检索 succeeded</text>
+<text x="855" y="620" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">结果保留，费用 2</text>
+<rect x="1080" y="555" width="210" height="100" rx="14" fill="#ffe9e2" stroke="#d5ded7"/>
+<text x="1100" y="589" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">脚本 failed</text>
+<text x="1100" y="620" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">不冒充成功；记录耗时</text>
+<rect x="1320" y="555" width="215" height="100" rx="14" fill="#e9edff" stroke="#d5ded7"/>
+<text x="1340" y="589" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">重试或替代</text>
+<text x="1340" y="620" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">复用检索，补齐未成功步</text>
+<polyline points="1045,605 1080,605" fill="none" stroke="#748178" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1290,605 1320,605" fill="none" stroke="#748178" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="835" y="702" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#253c32" font-weight="400">同请求续跑不重复收费；保存成功后重复执行返回同一方案 ID。</text>
+<rect x="40" y="780" width="1520" height="300" rx="14" fill="#fff" stroke="#d5ded7"/>
+<text x="60" y="814" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">04  痛点强化与验收</text>
+<rect x="65" y="850" width="345" height="85" rx="14" fill="#f8faf7" stroke="#d5ded7"/>
+<text x="85" y="884" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">P1 缺输入</text>
+<text x="85" y="915" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">不默认补齐预算/截止</text>
+<rect x="435" y="850" width="345" height="85" rx="14" fill="#f8faf7" stroke="#d5ded7"/>
+<text x="455" y="884" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">P2 重规划抹成本</text>
+<text x="455" y="915" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">整数账本保留已发生费用</text>
+<rect x="805" y="850" width="345" height="85" rx="14" fill="#f8faf7" stroke="#d5ded7"/>
+<text x="825" y="884" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">P3 步骤状态失真</text>
+<text x="825" y="915" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">依赖守卫 + 失败不记成功</text>
+<rect x="1175" y="850" width="345" height="85" rx="14" fill="#f8faf7" stroke="#d5ded7"/>
+<text x="1195" y="884" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">P4 重复/并发</text>
+<text x="1195" y="915" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">唯一方案 + 请求租约</text>
+<rect x="65" y="950" width="345" height="85" rx="14" fill="#f8faf7" stroke="#d5ded7"/>
+<text x="85" y="984" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">P5 续跑丢成果</text>
+<text x="85" y="1015" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">数据库保存成功产物/失败次数</text>
+<rect x="435" y="950" width="345" height="85" rx="14" fill="#f8faf7" stroke="#d5ded7"/>
+<text x="455" y="984" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">P6 截止失真</text>
+<text x="455" y="1015" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">真实时钟 + 累计模拟耗时</text>
+<rect x="805" y="950" width="345" height="85" rx="14" fill="#f8faf7" stroke="#d5ded7"/>
+<text x="825" y="984" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">P7 无解空转</text>
+<text x="825" y="1015" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">步数上限 + 明确不可行缺口</text>
+<rect x="1175" y="950" width="345" height="85" rx="14" fill="#f8faf7" stroke="#d5ded7"/>
+<text x="1195" y="984" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#253c32" font-weight="600">验证边界</text>
+<text x="1195" y="1015" font-family="Microsoft YaHei,sans-serif" font-size="17" fill="#5e7367" font-weight="400">Mock 与真实 Qwen 记录分开</text>
+<text x="45" y="1110" font-family="Microsoft YaHei,sans-serif" font-size="15" fill="#5e7367" font-weight="400">SVG 可导入 Figma · 规划原型 · 费用/耗时为明确标注的模拟单位</text>
+</svg>
