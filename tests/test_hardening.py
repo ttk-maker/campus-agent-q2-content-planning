@@ -21,6 +21,8 @@ class HardeningTests(unittest.TestCase):
             action=MockModel().decide(context)
             variants=instance.response_format['json_schema']['schema']['anyOf']
             allowed={v['properties']['tool']['enum'][0]:v for v in variants}
+            if context['snapshot']['selected_package'] is None and 'premium' in self.catalog['packages']:
+                self.assertEqual(allowed['select_plan']['properties']['arguments']['properties']['package']['enum'],['premium'])
             self.assertIn(action['tool'],allowed)
             for key,value in action['arguments'].items():
                 self.assertIn(value,allowed[action['tool']]['properties']['arguments']['properties'][key]['enum'])

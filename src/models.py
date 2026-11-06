@@ -71,7 +71,9 @@ class HTTPModel(HTTPTransport):
         variants=[]
         for tool in allowed:
             arguments={'type':'object','properties':{},'additionalProperties':False,'required':[]}
-            if tool=='select_plan':arguments.update(properties={'package':{'type':'string','enum':alternatives or packages}},required=['package'])
+            if tool=='select_plan':
+                choices=['premium'] if not package and 'premium' in packages else alternatives or packages
+                arguments.update(properties={'package':{'type':'string','enum':choices}},required=['package'])
             if tool=='finish':arguments.update(properties={'outcome':{'type':'string','enum':outcomes}},required=['outcome'])
             variants.append({'type':'object','properties':{'tool':{'type':'string','enum':[tool]},'arguments':arguments,'reason':{'type':'string'}},
                              'required':['tool','arguments','reason'],'additionalProperties':False})
