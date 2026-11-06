@@ -1,0 +1,17 @@
+{
+  "fonts": [
+    "14px",
+    "16px",
+    "20px",
+    "32px"
+  ],
+  "colors": [
+    "rgb(36, 94, 77)",
+    "rgb(32, 59, 52)",
+    "rgb(83, 104, 94)",
+    "rgb(255, 255, 255)",
+    "rgb(36, 91, 59)"
+  ],
+  "text": "跳到主要内容\nC / CONTENT OPS 项目 02\n使用手册 ↗\n内容活动规划\n\n在预算与截止时间内保存方案。费用与耗时为模拟值，不会实际消费或发布。\n\n01 / 活动需求\n演示场景\n预算 10 · 超限后重规划\n正常完成 · 预算 20\n缺少预算与截止时间\n高级脚本失败 · 保留检索\n预算 7 · 无可行方案\n仅剩 3 分钟\n基础脚本失败一次 · 续跑\n保存失败一次 · 续跑\n\n切换场景会新建请求；重试请使用“续跑”。\n\n活动主题\n预算 / 模拟单位\n截止时间 / 本地时区\n决策方式\n离线演练 · 不代表模型效果\n真实模型 · 本地 Qwen\n\n真实模式使用：qwen2.5:7b-instruct。离线模式仅验证流程与守卫。\n\n请求与工具配置\n开始规划\n→\n\n服务已连接。选择场景，或填写你的活动需求。\n\n02 / 执行结果\n等待开始\n实际费用\n—\n已选方案\n—\n保存状态\n未开始\n暂无规划结果\n\n规划后可查看费用、步骤状态与保存结果。\n\n03 / 已保存方案\n刷新列表\n秋季新品内容活动 · premium · 12 模拟单位\nplan-40c70de2ef10c1c0bf6a / 请求 normal-bc79a169-7020-4332-a4ba-8868a18117da\n秋季新品内容活动 · basic · 8 模拟单位\nplan-93c38ae46c9fc8d8e73b / 请求 reference-3f6bd199-b033-4475-8b0b-7a3fa9f179f6\n秋季新品内容活动 · premium · 12 模拟单位\nplan-0da3e15cc0c912cd27b0 / 请求 normal-a701962f-3cee-48b5-a132-0df57b8b95db\n<img src=x onerror=alert(1)> · basic · 8 模拟单位\nplan-1415cb18d0b60c1482d5 / 请求 reference-cc4bc416-10f6-4666-8fc0-50a190bf90a8\n秋季新品内容活动 · basic · 8 模拟单位\nplan-6221897c0c5d089e61ab / 请求 save_failure-ba762f43-2b0e-494c-a4dc-084efe276173\n秋季新品内容活动 · basic · 8 模拟单位\nplan-8cb8d06774b96f625ac5 / 请求 tool_failure-d6d94a1b-7f6f-4fd2-86c9-da28a401159b\n秋季新品内容活动 · basic · 8 模拟单位\nplan-54aed555c2ff3cadfc54 / 请求 resume-47809fc6-d338-4a4f-8bf1-2c93668c31ff\n秋季新品内容活动 · basic · 8 模拟单位\nplan-076bc84b4b891fb739ba / 请求 reference-909ea45a-f818-4be3-a518-622b3ad1704b\n本地工作台 · 合成素材与工具费用",
+  "mobileOverflow": false
+}

@@ -1,0 +1,17 @@
+test_actual_job_and_repeat (test_web.WebTests) ... ok
+test_api_prefix_is_not_web_page (test_web.WebTests) ... ok
+test_changed_input_conflict_is_visible (test_web.WebTests) ... ok
+test_concurrent_job_returns_conflict (test_web.WebTests) ... ok
+test_csrf_and_origin_guards (test_web.WebTests) ... ok
+test_host_guard_and_path_traversal (test_web.WebTests) ... ok
+test_invalid_json_unknown_fields_nonfinite (test_web.WebTests) ... ok
+test_malformed_catalog_is_bad_request (test_web.WebTests) ... ok
+test_missing_inputs_not_completed (test_web.WebTests) ... ok
+test_pages_and_health (test_web.WebTests) ... ok
+test_restart_retains_business_state (test_web.WebTests) ... ok
+test_resume_failure_uses_same_inputs (test_web.WebTests) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 7.731s
+
+OK

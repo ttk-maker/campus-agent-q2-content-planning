@@ -102,3 +102,8 @@ npm run test:browser
 ## 已知边界
 
 单机演示服务，无多租户权限、真实采购或内容质量评测；工具成功费/失败零费是本项目合成规则，不代表真实服务计费。SQLite 事务能覆盖本地模拟副作用；真实外部服务仍需幂等键及对账。Web 最近 100 次运行记录在内存中，重启会清空；业务结果、步骤和账本仍在数据库，Trace 应及时导出。真实模型样本量有限，不宣称所有输入均能正确规划。
+
+
+## 前端优化与复用 Skill
+
+[四向优化记录](docs/10-ui-refinement.md) · [frontend-four-pass Skill](docs/skills/frontend-four-pass/SKILL.md) · [展示检查](examples/ui-refinement/presentation/report.json)。本轮只调整展示与信息层级，后端及模型逻辑保持不变。
